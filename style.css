@@ -1,0 +1,256 @@
+.desktop {
+  align-items: start;
+  background-color: #362929;
+  display: grid;
+  justify-items: center;
+  width: 100vw;
+}
+
+.desktop .div {
+  background-color: #362929;
+  height: 2976px;
+  position: relative;
+  width: 1152px;
+}
+
+.desktop .banner {
+  background-color: #331616;
+  height: 192px;
+  left: 130px;
+  position: absolute;
+  top: 0;
+  width: 894px;
+}
+
+.desktop .overlap-group {
+  height: 140px;
+  left: 187px;
+  position: relative;
+  top: -1px;
+  width: 520px;
+}
+
+.desktop .text-wrapper {
+  color: #ffffff;
+  font-family: "Jomhuria-Regular", Helvetica;
+  font-size: 128px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 520px;
+}
+
+.desktop .text-wrapper-2 {
+  color: #ffffff;
+  font-family: "Jomhuria-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 151px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 96px;
+  white-space: nowrap;
+  width: 217px;
+}
+
+.desktop .overlap {
+  height: 549px;
+  left: 204px;
+  position: absolute;
+  top: 251px;
+  width: 364px;
+}
+
+.desktop .image {
+  background-color: #d9d9d9;
+  height: 544px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 364px;
+}
+
+.desktop .img {
+  aspect-ratio: 0.67;
+  height: 546px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 364px;
+}
+
+.desktop .image-wrapper {
+  background-color: #d9d9d9;
+  height: 544px;
+  left: 204px;
+  position: absolute;
+  top: 864px;
+  width: 364px;
+}
+
+.desktop .image-2 {
+  aspect-ratio: 0.67;
+  height: 542px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 361px;
+}
+
+.desktop .overlap-2 {
+  height: 544px;
+  left: 584px;
+  position: absolute;
+  top: 256px;
+  width: 364px;
+}
+
+.desktop .image-3 {
+  background-color: #d9d9d9;
+  height: 544px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 364px;
+}
+
+.desktop .image-4 {
+  aspect-ratio: 0.67;
+  height: 544px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 363px;
+}
+
+.desktop .overlap-3 {
+  height: 544px;
+  left: 584px;
+  position: absolute;
+  top: 864px;
+  width: 364px;
+}
+
+.desktop .image-5 {
+  height: 544px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 364px;
+}
+
+.desktop .div-wrapper {
+  background-color: #331616;
+  height: 224px;
+  left: 203px;
+  position: absolute;
+  top: 2688px;
+  width: 744px;
+}
+
+.desktop .p {
+  color: #ffffff;
+  font-family: "Jomhuria-Regular", Helvetica;
+  font-size: 48px;
+  font-weight: 400;
+  left: 26px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 15px;
+  width: 666px;
+}
+
+.desktop .overlap-4 {
+  height: 544px;
+  left: 583px;
+  position: absolute;
+  top: 1472px;
+  width: 365px;
+}
+
+.desktop .image-6 {
+  aspect-ratio: 0.67;
+  height: 544px;
+  left: 2px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 363px;
+}
+
+.desktop .img-wrapper {
+  background-image: url(./image-15.svg);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 544px;
+  left: 203px;
+  position: absolute;
+  top: 1472px;
+  width: 365px;
+}
+
+.desktop .image-7 {
+  aspect-ratio: 0.67;
+  height: 544px;
+  left: 1px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 363px;
+}
+
+.desktop .overlap-5 {
+  height: 545px;
+  left: 583px;
+  position: absolute;
+  top: 2080px;
+  width: 364px;
+}
+
+.desktop .image-8 {
+  aspect-ratio: 0.67;
+  height: 543px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 2px;
+  width: 362px;
+}
+
+.desktop .overlap-6 {
+  height: 545px;
+  left: 203px;
+  position: absolute;
+  top: 2080px;
+  width: 365px;
+}
+
+.desktop .image-9 {
+  height: 544px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 365px;
+}
+
+.desktop .image-10 {
+  aspect-ratio: 0.67;
+  height: 545px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 364px;
+}
