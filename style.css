@@ -3,11 +3,13 @@
   background-color: #362929;
   display: grid;
   justify-items: center;
+  align-items: start;
   width: 100vw;
 }
 
 .desktop .div {
   background-color: #362929;
+  width: 1152px;
   height: 2976px;
   position: relative;
   width: 1152px;
@@ -20,6 +22,10 @@
   position: absolute;
   top: 0;
   width: 894px;
+  height: 192px;
+  top: 0;
+  left: 130px;
+  background-color: #331616;
 }
 
 .desktop .overlap-group {
@@ -28,11 +34,19 @@
   position: relative;
   top: -1px;
   width: 520px;
+  height: 140px;
+  top: -1px;
+  left: 187px;
 }
 
 .desktop .text-wrapper {
-  color: #ffffff;
+  position: absolute;
+  width: 520px;
+  top: 0;
+  left: 0;
   font-family: "Jomhuria-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
   font-size: 128px;
   font-weight: 400;
   left: 0;
@@ -45,7 +59,10 @@
 }
 
 .desktop .text-wrapper-2 {
-  color: #ffffff;
+  position: absolute;
+  width: 217px;
+  top: 96px;
+  left: 151px;
   font-family: "Jomhuria-Regular", Helvetica;
   font-size: 48px;
   font-weight: 400;
@@ -64,6 +81,9 @@
   position: absolute;
   top: 251px;
   width: 364px;
+  height: 549px;
+  top: 251px;
+  left: 204px;
 }
 
 .desktop .image {
@@ -73,12 +93,19 @@
   position: absolute;
   top: 5px;
   width: 364px;
+  height: 544px;
+  top: 5px;
+  left: 0;
+  background-color: #d9d9d9;
 }
 
 .desktop .img {
-  aspect-ratio: 0.67;
+  position: absolute;
+  width: 364px;
   height: 546px;
+  top: 0;
   left: 0;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -92,12 +119,18 @@
   position: absolute;
   top: 864px;
   width: 364px;
+  height: 544px;
+  top: 864px;
+  left: 204px;
+  background-color: #d9d9d9;
 }
 
 .desktop .image-2 {
   aspect-ratio: 0.67;
   height: 542px;
+  top: 0;
   left: 0;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -110,6 +143,9 @@
   position: absolute;
   top: 256px;
   width: 364px;
+  height: 544px;
+  top: 256px;
+  left: 584px;
 }
 
 .desktop .image-3 {
@@ -119,12 +155,18 @@
   position: absolute;
   top: 0;
   width: 364px;
+  height: 544px;
+  top: 0;
+  left: 0;
+  background-color: #d9d9d9;
 }
 
 .desktop .image-4 {
   aspect-ratio: 0.67;
   height: 544px;
+  top: 0;
   left: 0;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -137,10 +179,16 @@
   position: absolute;
   top: 864px;
   width: 364px;
+  height: 544px;
+  top: 864px;
+  left: 584px;
 }
 
 .desktop .image-5 {
+  position: absolute;
+  width: 364px;
   height: 544px;
+  top: 0;
   left: 0;
   object-fit: cover;
   position: absolute;
@@ -155,10 +203,17 @@
   position: absolute;
   top: 2688px;
   width: 744px;
+  height: 224px;
+  top: 2688px;
+  left: 203px;
+  background-color: #331616;
 }
 
 .desktop .p {
-  color: #ffffff;
+  position: absolute;
+  width: 666px;
+  top: 15px;
+  left: 26px;
   font-family: "Jomhuria-Regular", Helvetica;
   font-size: 48px;
   font-weight: 400;
@@ -177,12 +232,18 @@
   position: absolute;
   top: 1472px;
   width: 365px;
+  height: 544px;
+  top: 1472px;
+  left: 583px;
 }
 
 .desktop .image-6 {
-  aspect-ratio: 0.67;
+  position: absolute;
+  width: 363px;
   height: 544px;
+  top: 0;
   left: 2px;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -198,12 +259,21 @@
   position: absolute;
   top: 1472px;
   width: 365px;
+  height: 544px;
+  top: 1472px;
+  left: 203px;
+  background-image: url(./img/image-15.svg);
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .desktop .image-7 {
-  aspect-ratio: 0.67;
+  position: absolute;
+  width: 363px;
   height: 544px;
+  top: 0;
   left: 1px;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -216,12 +286,18 @@
   position: absolute;
   top: 2080px;
   width: 364px;
+  height: 545px;
+  top: 2080px;
+  left: 583px;
 }
 
 .desktop .image-8 {
-  aspect-ratio: 0.67;
+  position: absolute;
+  width: 362px;
   height: 543px;
+  top: 2px;
   left: 0;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 2px;
@@ -234,10 +310,16 @@
   position: absolute;
   top: 2080px;
   width: 365px;
+  height: 545px;
+  top: 2080px;
+  left: 203px;
 }
 
 .desktop .image-9 {
+  position: absolute;
+  width: 365px;
   height: 544px;
+  top: 0;
   left: 0;
   object-fit: cover;
   position: absolute;
@@ -246,9 +328,12 @@
 }
 
 .desktop .image-10 {
-  aspect-ratio: 0.67;
+  position: absolute;
+  width: 364px;
   height: 545px;
+  top: 0;
   left: 0;
+  aspect-ratio: 0.67;
   object-fit: cover;
   position: absolute;
   top: 0;
