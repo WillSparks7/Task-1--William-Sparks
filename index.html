@@ -1,10 +1,292 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Task-1 William Sparks</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project • Figma handoff</title>
+  <meta name="description" content="Paste values from your Figma design (colors, type, spacing) into the CSS variables below." />
+
+  <!--
+  HOW TO USE WITH YOUR FIGMA FILE (private links can’t be fetched automatically):
+  1) Open your Figma design → switch to Dev Mode → Inspect.
+  2) For each text style (H1, H2, Body, etc.), copy CSS (font-family, size, weight, line-height, letter-spacing) and paste into the variables in :root and the .h* utilities below.
+  3) For colors, copy fill colors (HEX) and assign to --brand, --bg, --surface, --fg, --muted, etc.
+  4) Export images from Figma (PNG/JPG @2x). Replace the placeholder image src values in the HTML.
+  5) For radii/shadows, Inspect any card/button, copy border-radius and shadow, paste into variables.
+  6) Adjust the grid counts and section order to match your layout.
+  -->
+
+  <style>
+    /* -------------------------------
+       DESIGN TOKENS → paste from Figma
+    --------------------------------*/
+    :root {
+      /* Colors */
+      --bg: #0b0c10;           /* e.g., Artboard/base */
+      --surface: #111218;      /* e.g., Card base */
+      --surface-alt: #0f1016;  /* e.g., Alt sections */
+      --fg: #e8eaf2;           /* Primary text */
+      --muted: #a6adbb;        /* Secondary text */
+      --brand: #7c5cff;        /* Primary brand color */
+      --accent: #26d07c;       /* Accent color */
+      --stroke: #26293a;       /* Hairlines */
+
+      /* Typography (replace with Figma text styles) */
+      --font-sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --fs-body: 16px;         /* Base size */
+      --lh-body: 1.6;          /* Base line-height */
+
+      /* Headings (map to your Figma h1/h2/… exact values) */
+      --h1: clamp(40px, 4vw + 16px, 56px);
+      --h1-lh: 1.1;
+      --h2: 40px;   --h2-lh: 1.15;
+      --h3: 30px;   --h3-lh: 1.2;
+      --h4: 24px;   --h4-lh: 1.25;
+
+      /* Spacing scale (match your Figma 4/8pt scale) */
+      --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.25rem; --s-6: 1.5rem;
+      --s-8: 2rem; --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem; --s-20: 5rem; --s-24: 6rem;
+
+      /* Radii & elevation */
+      --radius: 16px;                /* copy from a card in Figma */
+      --shadow-1: 0 2px 10px rgba(0,0,0,.18);
+      --shadow-2: 0 12px 40px rgba(0,0,0,.28);
+
+      /* Container */
+      --max-w: 1120px;
+    }
+
+    /* -------------------------------
+       Base / Reset
+    --------------------------------*/
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--fg); background:var(--bg);
+      font: 400 var(--fs-body)/var(--lh-body) var(--font-sans);
+      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
+    }
+    img,svg,video{display:block; max-width:100%}
+    a{color:inherit}
+
+    /* Layout helpers */
+    .container{width:min(var(--max-w),92%); margin-inline:auto}
+    .section{padding:var(--s-16) 0}
+    .section--alt{background:var(--surface-alt)}
+    .stack{display:flex; gap:var(--s-4)}
+    .stack--col{flex-direction:column}
+    .stack--row{flex-wrap:wrap}
+    .grid{display:grid; gap:var(--s-8)}
+    .grid--2{grid-template-columns: 1.2fr 1fr}
+    .grid--3{grid-template-columns: repeat(3,1fr)}
+
+    /* Typography utilities (wire these to your Figma styles) */
+    .eyebrow{font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:var(--accent)}
+    .h1{font-size:var(--h1); line-height:var(--h1-lh); margin:.2em 0 .6em}
+    .h2{font-size:var(--h2); line-height:var(--h2-lh); margin:0 0 .5em}
+    .h3{font-size:var(--h3); line-height:var(--h3-lh); margin:0 0 .5em}
+    .h4{font-size:var(--h4); line-height:var(--h4-lh); margin:0 0 .4em}
+    .lead{font-size:18px; color:var(--muted); max-width:65ch}
+    .muted{color:var(--muted)}
+
+    /* Media */
+    .media-rounded{border-radius:var(--radius); overflow:clip}
+    .media-shadow{box-shadow:var(--shadow-2)}
+
+    /* Header / Nav */
+    .site-header{position:sticky; top:0; z-index:50; background: rgba(11,12,16,.7); backdrop-filter: blur(8px); border-bottom:1px solid var(--stroke)}
+    .header__bar{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:var(--s-4); padding:var(--s-4) 0}
+    .brand{display:inline-flex; align-items:center; gap:var(--s-2); text-decoration:none}
+    .brand__logo{width:28px; height:28px}
+    .nav{justify-self:center}
+    .nav__list{display:flex; gap:var(--s-6); list-style:none; margin:0; padding:0}
+    .nav__link{text-decoration:none; color:var(--muted); font-weight:500}
+    .nav__link:hover,.nav__link:focus{color:#fff}
+    .nav__toggle{display:none}
+
+    /* Buttons */
+    .btn{--bg:#1a1b22; --fg:#fff; display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      padding:.75rem 1rem; border:1px solid var(--stroke); border-radius:12px; background:var(--bg); color:var(--fg); text-decoration:none; font-weight:600; box-shadow:var(--shadow-1)}
+    .btn--primary{--bg:var(--brand)}
+    .btn--ghost{background:transparent}
+    .btn--block{display:flex; width:100%}
+    .btn:hover{filter:brightness(1.05)}
+
+    /* Forms */
+    .input{width:100%; padding:.8rem 1rem; border:1px solid var(--stroke); border-radius:12px; background:var(--surface); color:var(--fg)}
+
+    /* Hero */
+    .hero{padding-top:var(--s-24)}
+
+    /* Cards */
+    .card{background:var(--surface); border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-8); box-shadow:var(--shadow-1)}
+    .card__icon{width:36px; height:36px; margin-bottom:var(--s-4)}
+
+    /* Pricing */
+    .price{background:var(--surface); border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-8); text-align:center}
+    .price--featured{border-color:var(--brand); box-shadow:0 0 0 2px color-mix(in oklab, var(--brand) 40%, transparent)}
+    .price__value{font-size:28px; margin:.5rem 0 1rem}
+    .price__features{list-style:none; padding:0; margin:0 0 1rem 0}
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--stroke); padding:var(--s-12) 0}
+    .footer__grid{display:grid; gap:var(--s-8); grid-template-columns:1fr auto auto; align-items:start}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .grid--2{grid-template-columns: 1fr}
+      .grid--3{grid-template-columns: 1fr}
+      .nav{justify-self:end}
+      .nav__toggle{display:inline-flex}
+      .nav__list{display:none}
+      .nav__list.is-open{display:flex; position:absolute; right:4%; top:64px; background:var(--surface); border:1px solid var(--stroke); border-radius:12px; padding:var(--s-4)}
+    }
+  </style>
 </head>
 <body>
-    Nothing to see here yet.
-<body>
-</body>html>
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <!-- Header mapped to your Figma top bar -->
+  <header class="site-header">
+    <div class="container header__bar">
+      <a class="brand" href="#">
+        <!-- Replace logo src -->
+        <img class="brand__logo" src="./assets/logo.svg" alt="Brand logo" />
+        <strong>BrandName</strong>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">☰<span class="sr-only">Menu</span></button>
+        <ul id="nav-menu" class="nav__list">
+          <li><a class="nav__link" href="#features">Features</a></li>
+          <li><a class="nav__link" href="#gallery">Gallery</a></li>
+          <li><a class="nav__link" href="#pricing">Pricing</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="stack">
+        <a class="btn btn--ghost" href="#">Log in</a>
+        <a class="btn btn--primary" href="#">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO (map to your hero frame) -->
+    <section class="section hero">
+      <div class="container grid grid--2">
+        <div>
+          <p class="eyebrow">New • 2025</p>
+          <h1 class="h1">Paste your hero headline from Figma</h1>
+          <p class="lead">Short supporting line. Keep to ~2 lines for visual balance against media.</p>
+          <div class="stack stack--row">
+            <a href="#" class="btn btn--primary">Primary CTA</a>
+            <a href="#" class="btn">Secondary</a>
+          </div>
+        </div>
+        <div>
+          <!-- Replace with exported hero image/video -->
+          <img class="media-rounded media-shadow" src="./assets/hero.jpg" alt="Product preview" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES (cards or rows) -->
+    <section id="features" class="section section--alt">
+      <div class="container">
+        <header style="text-align:center; margin-bottom:var(--s-10)">
+          <h2 class="h2">Features</h2>
+          <p class="muted">Mirror your Figma subtitle here.</p>
+        </header>
+        <div class="grid grid--3">
+          <article class="card">
+            <img class="card__icon" src="./assets/icon-1.svg" alt="" />
+            <h3 class="h4">Fast performance</h3>
+            <p>One crisp sentence describing the benefit.</p>
+          </article>
+          <article class="card">
+            <img class="card__icon" src="./assets/icon-2.svg" alt="" />
+            <h3 class="h4">Beautiful design</h3>
+            <p>Match spacing and type from your figma style.</p>
+          </article>
+          <article class="card">
+            <img class="card__icon" src="./assets/icon-3.svg" alt="" />
+            <h3 class="h4">Secure by default</h3>
+            <p>Short and scannable copy works best.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY (screens) -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2 class="h2">Product screens</h2>
+        <div class="grid grid--3">
+          <img class="media-rounded media-shadow" src="./assets/screen-1.jpg" alt="Screen 1" />
+          <img class="media-rounded media-shadow" src="./assets/screen-2.jpg" alt="Screen 2" />
+          <img class="media-rounded media-shadow" src="./assets/screen-3.jpg" alt="Screen 3" />
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING (if present in Figma) -->
+    <section id="pricing" class="section section--alt">
+      <div class="container">
+        <h2 class="h2">Simple pricing</h2>
+        <div class="grid grid--3">
+          <article class="price">
+            <h3 class="h4">Starter</h3>
+            <p class="price__value">$9<span class="muted">/mo</span></p>
+            <ul class="price__features">
+              <li>Feature A</li>
+              <li>Feature B</li>
+              <li>Feature C</li>
+            </ul>
+            <a href="#" class="btn btn--block">Choose Starter</a>
+          </article>
+          <article class="price price--featured">
+            <h3 class="h4">Pro</h3>
+            <p class="price__value">$29<span class="muted">/mo</span></p>
+            <ul class="price__features">
+              <li>Everything in Starter</li>
+              <li>+ Extra D</li>
+              <li>+ Extra E</li>
+            </ul>
+            <a href="#" class="btn btn--primary btn--block">Choose Pro</a>
+          </article>
+          <article class="price">
+            <h3 class="h4">Enterprise</h3>
+            <p class="price__value">Let’s talk</p>
+            <ul class="price__features">
+              <li>Custom SLAs</li>
+              <li>Dedicated support</li>
+              <li>Security reviews</li>
+            </ul>
+            <a href="#" class="btn btn--block">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / FORM -->
+    <section id="contact" class="section">
+      <div class="container grid grid--2">
+        <div>
+          <h2 class="h2">Ready to get started?</h2>
+          <p class="lead">Swap this with your Figma CTA. The layout adapts to long or short copy.</p>
+        </div>
+        <form class="stack stack--row" action="#" method="post">
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" class="input" placeholder="Enter your email" required>
+          <button class="btn btn--primary" type="submit">Join waitlist</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="cont
